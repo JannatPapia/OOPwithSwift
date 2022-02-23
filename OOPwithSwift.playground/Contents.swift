@@ -35,7 +35,7 @@ var greeting = "Hello, playground"
 //define a class
 class Bicycle {
 
-    // define two properties(2 variable)
+    // define two properties(3 variable)
     var name = ""
     var gears = 0
     var color = ""
@@ -91,6 +91,51 @@ class Room {
 
   // access method inside class
   studyRoom.calculateArea()
+
+
+
+
+ //MARK: adding parametrized function in class
+
+//MARK: pass parameter function in class
+
+
+class student {
+    // define two variable
+    var id = 0
+    var gpa = 0.0
+    
+    //for print value
+    func printvalue() {
+        print("ID: \(id)\nGPA: \(gpa)")
+    }
+  //adding parametrized function
+    func setValue(a: Int, b: Double)  {
+//    id and gpa assigned a and b respectievly
+        id = a
+        gpa = b
+    }
+}
+//create instance of student
+var nazmul = student()
+var papia = student()
+//set parameter function value and call printvalue function
+nazmul.setValue(a: 1001, b: 4.92)
+nazmul.printvalue()
+//set parameter function value and call printvalue function
+papia.setValue(a: 1002, b: 4.62)
+papia.printvalue()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
