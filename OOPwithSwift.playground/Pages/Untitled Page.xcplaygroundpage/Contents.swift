@@ -126,10 +126,17 @@ nazmul.printvalue()
 papia.setValue(a: 1002, b: 4.62)
 papia.printvalue()
 
+/*
+ 
+ MARK: an initializer is a special function that we use to create objects of a particular class, struct, or other type. Initializers are sometimes called constructors, because they “construct” objects.
+
+*/
 
 
-
-
+// Constractor is a special type of function.
+//Constractor has the same name as that of the class belongs
+//it has no return type not even void
+//it is called automatically
 
 
 
