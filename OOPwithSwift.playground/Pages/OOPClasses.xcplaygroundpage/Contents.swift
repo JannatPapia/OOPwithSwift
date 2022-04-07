@@ -51,27 +51,111 @@ var greeting = "Hello, playground"
 
 // lets add more items
 
+//print("What exactly in OPP: Object Orented Programmimg??")
+//
+//struct Apple { // add some grocery item
+//    let name: String
+//    let price: Float
+//}
+//
+//struct Beef { // add more item
+//    let name: String
+//    let weight: Float
+//    let priceperPound: Float
+//}
+//
+//struct Drinks {
+//    let name: String
+//    let price: Float
+//}
+//
+//struct Customer { // use struct for customer trying to buy items for this store
+//    let name: String
+//    let groceries: [Any]
+//}
+//
+//struct GroceryStore { // use Struct
+//    func printReceipt(customer: Customer) {
+//        //implementation is going to print out recept for grocery items for customer
+//        print("Printing out receipt for customer: \(customer.name)")
+//        var total: Float = 0
+//        customer.groceries.forEach{ (item) in
+//            if let apple = item as? Apple {
+//                print("\(apple.name): \(apple.price)")
+//                total += apple.price
+//            } else if let beef = item as? Beef {
+//                print("\(beef.name): Weight \(beef.weight), Price Per Pound: \(beef.priceperPound)")
+//                total += beef.weight * beef.priceperPound
+//            } else if let drinks = item as? Drinks {
+//                print("\(drinks.name): \(drinks.price)")
+//                total += drinks.price
+//            }
+//        }
+//        print("Total: \(total)")
+//    }
+//
+//}
+//
+//
+////Create an instance for grocery item
+//let redWine = Drinks(name: "Red wine", price: 94.5)
+//let newYorkSteak = Beef(name: "New York Steak", weight: 2.5, priceperPound: 9.99)
+//let goldenApple = Apple(name: "Golden Apple", price: 4.99)
+//let greenApple = Apple(name: "Green Apple", price: 1.99)
+//let bill = Customer(name: "Nazmul", groceries: [greenApple, goldenApple, newYorkSteak, redWine])
+//let safeway = GroceryStore()
+//safeway.printReceipt(customer: bill)
+
+
+
+
+
+
 print("What exactly in OPP: Object Orented Programmimg??")
 
-struct Apple { // add some grocery item
-    let name: String
-    let price: Float
+protocol GroceryItem {
+    func cost()-> Float
+    func description()-> String
 }
 
-struct Beef { // add more item
+
+struct Apple: GroceryItem { // add some grocery item
+    let name: String
+    let price: Float
+    func cost() -> Float {
+        return price
+    }
+    func description()-> String{
+        return "\(name): \(price)"
+    }
+}
+
+struct Beef: GroceryItem { // add more item
     let name: String
     let weight: Float
     let priceperPound: Float
+    func cost() -> Float {
+        return weight * priceperPound
+    }
+    func description()-> String {
+         return "\(name): Weight \(weight), Price Per Pound: \(priceperPound)"
+    }
 }
 
-struct Drinks {
+struct Drinks: GroceryItem {
     let name: String
     let price: Float
+    func cost() -> Float {
+        return price
+    }
+    func description()-> String {
+        return "\(name): \(price)"
+    }
 }
 
 struct Customer { // use struct for customer trying to buy items for this store
     let name: String
-    let groceries: [Any]
+    let groceries: [GroceryItem]
 }
 
 struct GroceryStore { // use Struct
@@ -80,20 +164,24 @@ struct GroceryStore { // use Struct
         print("Printing out receipt for customer: \(customer.name)")
         var total: Float = 0
         customer.groceries.forEach{ (item) in
-            if let apple = item as? Apple {
-                print("\(apple.name): \(apple.price)")
-                total += apple.price
-            } else if let beef = item as? Beef {
-                print("\(beef.name): Weight \(beef.weight), Price Per Pound: \(beef.priceperPound)")
-                total += beef.weight * beef.priceperPound
-            } else if let drinks = item as? Drinks {
-                print("\(drinks.name): \(drinks.price)")
-                total += drinks.price
-            }
+          //  if let groceryItem = item as? GroceryItem {
+            print(item.description())
+                total += item.cost()
+       //     }
+//            if let apple = item as? Apple {
+//                print("\(apple.name): \(apple.price)")
+//                total += apple.price
+//            } else if let beef = item as? Beef {
+//                print("\(beef.name): Weight \(beef.weight), Price Per Pound: \(beef.priceperPound)")
+//                total += beef.weight * beef.priceperPound
+//            } else if let drinks = item as? Drinks {
+//                print("\(drinks.name): \(drinks.price)")
+//                total += drinks.price
+//            }
         }
         print("Total: \(total)")
+ //   }
     }
-    
 }
 
 
@@ -105,9 +193,6 @@ let greenApple = Apple(name: "Green Apple", price: 1.99)
 let bill = Customer(name: "Nazmul", groceries: [greenApple, goldenApple, newYorkSteak, redWine])
 let safeway = GroceryStore()
 safeway.printReceipt(customer: bill)
-
-
-
 
 
 
